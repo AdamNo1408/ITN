@@ -1,0 +1,33 @@
+﻿<div class="topNav">
+    @Html.ActionLink("Create Issue", "CreateIssue", "Issue", null, new { @class="create", id = "createIssue" })
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dialog').dialog({
+            autoOpen: false,
+            dialogClass: "noClose",
+            width: 800,
+            position: {
+                my: "center top",
+                at: "center top",
+                of: "div.mainBody"
+            },
+            resizable: false,
+            title: 'Create Issue',
+            modal: true,
+            open: function (event, ui) {
+                $(this).load("@Url.Action("CreateIssueModal", "Issue")");
+            },
+            buttons: null
+        });
+
+        $('#createIssue').attr('href', "#");
+
+        $('#createIssue').click(function () {
+            $('#dialog').dialog("open");
+        });
+    });
+</script>
+
+<div id="dialog" title="Create Issue" style="overflow:hidden;"></div>

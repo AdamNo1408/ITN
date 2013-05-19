@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Create Issue";
+    
+    if(Model.IsModal)
+    {
+        Layout = null;
+    }
+}
+
+@model IssueTracker.Web.Models.CreateIssue
+
+<div class="createIssue">
+    @{using (Html.BeginForm("CreateIssue", "Issue", FormMethod.Post, new { @class = "createForm" }))
+      {
+        @Html.AntiForgeryToken()
+        
+        <div class="formField">
+            @Html.LabelFor(x => x.Title, new { @class = "labels" })
+            @Html.TextBoxFor(x => x.Title)
+            <span class="valError">@Html.ValidationMessageFor(x => x.Title)</span>
+        </div>
+
+        <div class="formField">
+            @Html.LabelFor(x => x.IssueType, new { @class = "labels" })
+            @Html.DropDownListFor(x => x.IssueType, Model.IssueTypeOptions)
+            <span class="valError">@Html.ValidationMessageFor(x => x.IssueType)</span>
+        </div>
+
+        <div class="formField">
+            @Html.LabelFor(x => x.Description, new { @class = "labels" })
+            @Html.TextAreaFor(x => x.Description)
+            <span class="valError">@Html.ValidationMessageFor(x => x.Description)</span>
+        </div>
+
+        <div class="buttons">
+            <input class="button" type="submit" value="Save" />
+            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "button" })
+        </div>
+      }
+    }
+</div>

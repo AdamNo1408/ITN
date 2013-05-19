@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Issue Tracker .Net</title>
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    <div class="mainHeader">
+        <h1>Issue Tracker .Net</h1>
+        @Html.Partial("TopNav")
+    </div>
+    <div class="mainBody">
+        @RenderBody()
+    </div>
+</body>
+</html>
