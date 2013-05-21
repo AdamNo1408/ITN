@@ -15,6 +15,8 @@ namespace IssueTracker.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
         }
     }
 }
