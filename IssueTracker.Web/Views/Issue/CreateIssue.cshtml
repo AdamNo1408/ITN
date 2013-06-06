@@ -11,10 +11,12 @@
 
 @model IssueTracker.Web.Models.CreateIssue
 
+<div id="createIssueWrapper">
 <div class="createIssue">
-    @{using (Html.BeginForm("CreateIssue", "Issue", FormMethod.Post, new { @class = "createForm" }))
+    @{using (Ajax.BeginForm("CreateIssue", "Issue", new AjaxOptions { HttpMethod = "Post", OnSuccess = "createIssueSuccess", UpdateTargetId = "createIssueWrapper", InsertionMode = InsertionMode.Replace }))
       {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.IsModal)
         
         <div class="formField">
             @Html.LabelFor(x => x.Title, new { @class = "labels" })
@@ -41,3 +43,13 @@
       }
     }
 </div>
+    </div>
+
+<script type="text/javascript">
+    function createIssueSuccess(data) {
+        if (data == 'OK') {
+            $('#dialog').dialog('close');
+        }
+    };
+    </script>
+
