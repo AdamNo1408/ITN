@@ -3,7 +3,7 @@
 
     if (Model.IsModal)
     {
-        @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 
         Layout = null;
     }
@@ -12,38 +12,38 @@
 @model IssueTracker.Web.Models.CreateIssue
 
 <div id="createIssueWrapper">
-<div class="createIssue">
-    @{using (Ajax.BeginForm("CreateIssue", "Issue", new AjaxOptions { HttpMethod = "Post", OnSuccess = "createIssueSuccess", UpdateTargetId = "createIssueWrapper", InsertionMode = InsertionMode.Replace }))
-      {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(x => x.IsModal)
+    <div class="createIssue">
+        @{using (Ajax.BeginForm("CreateIssue", "Issue", new AjaxOptions { HttpMethod = "Post", OnSuccess = "createIssueSuccess", UpdateTargetId = "createIssueWrapper", InsertionMode = InsertionMode.Replace }))
+          {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.IsModal)
         
-        <div class="formField">
-            @Html.LabelFor(x => x.Title, new { @class = "labels" })
-            @Html.TextBoxFor(x => x.Title)
-            <span class="valError">@Html.ValidationMessageFor(x => x.Title)</span>
-        </div>
+            <div class="formField">
+                @Html.LabelFor(x => x.Title, new { @class = "labels" })
+                @Html.TextBoxFor(x => x.Title)
+                <span class="valError">@Html.ValidationMessageFor(x => x.Title)</span>
+            </div>
 
-        <div class="formField">
-            @Html.LabelFor(x => x.IssueType, new { @class = "labels" })
-            @Html.DropDownListFor(x => x.IssueType, Model.IssueTypeOptions)
-            <span class="valError">@Html.ValidationMessageFor(x => x.IssueType)</span>
-        </div>
+            <div class="formField">
+                @Html.LabelFor(x => x.IssueType, new { @class = "labels" })
+                @Html.DropDownListFor(x => x.IssueType, Model.IssueTypeOptions)
+                <span class="valError">@Html.ValidationMessageFor(x => x.IssueType)</span>
+            </div>
 
-        <div class="formField">
-            @Html.LabelFor(x => x.Description, new { @class = "labels" })
-            @Html.TextAreaFor(x => x.Description)
-            <span class="valError">@Html.ValidationMessageFor(x => x.Description)</span>
-        </div>
+            <div class="formField">
+                @Html.LabelFor(x => x.Description, new { @class = "labels" })
+                @Html.TextAreaFor(x => x.Description)
+                <span class="valError">@Html.ValidationMessageFor(x => x.Description)</span>
+            </div>
 
-        <div class="buttons">
-            <input class="button" type="submit" value="Save" />
-            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "button" })
-        </div>
-      }
-    }
-</div>
+            <div class="buttons">
+                <input class="button" type="submit" value="Save" />
+                @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "button" })
+            </div>
+          }
+        }
     </div>
+</div>
 
 <script type="text/javascript">
     function createIssueSuccess(data) {
@@ -51,5 +51,5 @@
             $('#dialog').dialog('close');
         }
     };
-    </script>
+</script>
 
